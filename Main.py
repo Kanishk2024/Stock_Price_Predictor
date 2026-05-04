@@ -16,7 +16,6 @@ import torch.optim as optim
 from sklearn.preprocessing import StandardScaler
 from sklearn.metrics import root_mean_squared_error
 
-
 # In[4]:
 
 
@@ -26,7 +25,9 @@ device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 # In[5]:
 
 
-ticker = 'AAPL'
+ticker = input("Write Company Name")
+print(ticker)
+
 df = yf.download(ticker, '2020-01-01')
 
 

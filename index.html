@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Price Predictor</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📈 Stock Price Predictor</h1>
+            <p>Predict stock prices using LSTM Neural Network</p>
+        </header>
+
+        <div class="content">
+            <div class="input-section">
+                <h2>Enter Company Ticker</h2>
+                <div class="input-group">
+                    <input 
+                        type="text" 
+                        id="tickerInput" 
+                        placeholder="e.g., AAPL, GOOGL, MSFT" 
+                        maxlength="10"
+                    >
+                    <button id="predictBtn" onclick="predictStock()">Predict</button>
+                </div>
+                <p class="help-text">Enter a valid stock ticker symbol (e.g., AAPL for Apple)</p>
+            </div>
+
+            <div id="loadingSpinner" class="loading-spinner" style="display: none;">
+                <div class="spinner"></div>
+                <p>Training model and fetching predictions...</p>
+            </div>
+
+            <div id="errorMessage" class="error-message" style="display: none;"></div>
+
+            <div id="resultsSection" class="results-section" style="display: none;">
+                <div class="metrics">
+                    <div class="metric-card">
+                        <h3>Training RMSE</h3>
+                        <p id="trainRmse" class="metric-value">-</p>
+                    </div>
+                    <div class="metric-card">
+                        <h3>Testing RMSE</h3>
+                        <p id="testRmse" class="metric-value">-</p>
+                    </div>
+                    <div class="metric-card">
+                        <h3>Latest Price</h3>
+                        <p id="latestPrice" class="metric-value">-</p>
+                    </div>
+                </div>
+
+                <div class="charts-container">
+                    <div class="chart-wrapper">
+                        <h3>Stock Price Prediction (Test Set)</h3>
+                        <canvas id="priceChart"></canvas>
+                    </div>
+                    <div class="chart-wrapper">
+                        <h3>Prediction Error Over Time</h3>
+                        <canvas id="errorChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="historical-section">
+                    <h3>Historical Price Comparison</h3>
+                    <canvas id="historicalChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>Stock Price Predictor • Powered by PyTorch LSTM | Data from Yahoo Finance</p>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
